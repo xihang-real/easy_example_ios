@@ -1,4 +1,17 @@
 # ZEGOCLOUD easy example
+<p align="center">
+    <a href="https://github.com/ZEGOCLOUD/easy_example_ios/releases"><img src="https://img.shields.io/github/downloads/ZEGOCLOUD/easy_example_ios/total" alt="Platform"/></a>
+    <a href="https://discord.gg/EtNRATttyp">
+        <img src="https://img.shields.io/discord/980014613179555870?color=5865F2&logo=discord&logoColor=white" alt="ZEGOCLOUD"/>
+    </a>
+    <p>
+    <p>Click the search button below to search documentation or error code</p>
+    <a href="https://docs.zegocloud.com/">
+        <img width="589" alt="image" src="https://user-images.githubusercontent.com/5242852/170823639-2a684b4c-0bad-445a-b04e-5d4b6912e900.png">
+    </a>
+    </p>
+</p>
+
 ZEGOCLOUD's easy example is a simple wrapper around our RTC product. You can refer to the sample code for quick integration.
 
 ## Getting started
@@ -17,7 +30,7 @@ ZEGOCLOUD's easy example is a simple wrapper around our RTC product. You can ref
 
 ### Modify the project configurations
 ![](media/16496764650900/16497329091614.png)
-You need to modify `appID` and `serverSecret` to your own account, which can be obtained in the [ZEGO Admin Console](https://console.zegocloud.com/).
+You need to modify `appID` and `appSign` to your own account, which can be obtained in the [ZEGO Admin Console](https://console.zegocloud.com/).
 
 ### Run the sample code
 
@@ -30,8 +43,9 @@ You need to modify `appID` and `serverSecret` to your own account, which can be 
 ## Integrate the SDK into your own project
 
 ### Introduce SDK
-1 add `ZegoExpressEngine` and `ZegoToken` SDK in your project 
+1 add `ZegoExpressEngine` SDK in your project 
 2 Run the `pod install` command to install all dependencies that are needed.
+
 ```swift
 target 'Your_Project_Name' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -39,7 +53,6 @@ target 'Your_Project_Name' do
 
   # Pods for ZegoEasyExample
   pod 'ZegoExpressEngine'
-  pod ‘ZegoToken’
 
 end
 ```
@@ -55,7 +68,7 @@ Before using the SDK function, you need to create the SDK first. We recommend cr
 ```swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // create engine
-        ZegoExpressManager.shared.createEngine(appID: AppCenter.appID)
+        ZegoExpressManager.shared.createEngine(appID: AppCenter.appID, appSign: AppCenter.appSign)
         return true
     }
 ```
@@ -76,9 +89,8 @@ The following sample code is an example of a call scenario:
         // join room
         let roomID = "111"
         let user = ZegoUser(userID: "id\(Int(arc4random()))", userName: "Tim")
-        let token = generateToken(userID: user.userID)
         let option: ZegoMediaOptions = [.autoPlayVideo, .autoPlayAudio, .publishLocalAudio, .publishLocalVideo]
-        ZegoExpressManager.shared.joinRoom(roomID: roomID, user: user, token: token, options: option)
+        ZegoExpressManager.shared.joinRoom(roomID: roomID, user: user, options: option)
         presentVideoVC()
     }
 ```
