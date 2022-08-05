@@ -60,12 +60,10 @@ PODS:
   - ZegoExpressEngine (2.17.1.1):
     - ZegoExpressEngine/Video (= 2.17.1.1)
   - ZegoExpressEngine/Video (2.17.1.1)
-  - ZegoToken (1.0.0)
 
 DEPENDENCIES:
   - Firebase/Messaging
   - ZegoExpressEngine
-  - ZegoToken
 
 SPEC REPOS:
   trunk:
@@ -80,7 +78,6 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - ZegoExpressEngine
-    - ZegoToken
 
 SPEC CHECKSUMS:
   Firebase: a876fadc5ea653a377693376fd4f885c62704512
@@ -94,8 +91,7 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
   ZegoExpressEngine: 718bfb624f56b10ac06705f18f8aba4ab12a4ade
-  ZegoToken: 8564829c84afb1cf5d6c6102542375773c4b3519
 
-PODFILE CHECKSUM: 7b24c6fd4f0d292fa88282ec65629634f7d4848d
+PODFILE CHECKSUM: ce27ece0b5a62884499a5a22b658c498972906f2
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

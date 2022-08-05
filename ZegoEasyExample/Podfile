@@ -7,7 +7,6 @@ target 'ZegoEasyExample' do
 
   # Pods for ZegoEasyExample
   pod 'ZegoExpressEngine'
-  pod 'ZegoToken'
   pod 'Firebase/Messaging'
 
 end

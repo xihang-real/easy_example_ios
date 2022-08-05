@@ -7,7 +7,6 @@
 
 import UIKit
 import ZegoExpressEngine
-import ZegoToken
 
 class ViewController: UIViewController {
     
@@ -75,9 +74,8 @@ class ViewController: UIViewController {
             if requestStatus?.ret == 0 {
                 let roomID = "001"
                 let user = ZegoUser(userID:userID, userName:("\(userID)Test"))
-                let token = self.generateToken(userID: user.userID)
                 let option: ZegoMediaOptions = [.autoPlayAudio, .publishLocalAudio]
-                ZegoExpressManager.shared.joinRoom(roomID: roomID, user: user, token: token, options: option)
+                ZegoExpressManager.shared.joinRoom(roomID: roomID, user: user, options: option)
                 self.presentVC(.voice)
             }
         }
@@ -103,9 +101,8 @@ class ViewController: UIViewController {
                 // join room
                 let roomID = "001"
                 let user = ZegoUser(userID:userID, userName:("\(userID)Test"))
-                let token = self.generateToken(userID: user.userID)
                 let option: ZegoMediaOptions = [.autoPlayVideo, .autoPlayAudio, .publishLocalAudio, .publishLocalVideo]
-                ZegoExpressManager.shared.joinRoom(roomID: roomID, user: user, token: token, options: option)
+                ZegoExpressManager.shared.joinRoom(roomID: roomID, user: user, options: option)
                 self.presentVC(.video)
             }
         }
@@ -122,12 +119,6 @@ class ViewController: UIViewController {
         self.present(callVC, animated: true, completion: nil)
     }
     
-    // !!! When your app is ready to go live, remember not to generate the Token on your client; Otherwise, there is a risk of the ServerSecret being exposed!!!
-    func generateToken(userID: String) -> String {
-        let tokenResult = ZegoToken.generate(AppCenter.appID, userID: userID, secret: AppCenter.serverSecret)
-        return tokenResult.token
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         callUserIDTextField.endEditing(true)
     }
@@ -142,14 +133,13 @@ extension ViewController: CallAcceptTipViewDelegate {
         guard let userID = userID else { return }
         let roomID = "001"
         let user = ZegoUser(userID:userID, userName:("\(userID)Test"))
-        let token = self.generateToken(userID: user.userID)
         var option: ZegoMediaOptions?
         if callType == .video {
             option = [.autoPlayVideo, .autoPlayAudio, .publishLocalAudio, .publishLocalVideo]
         } else {
             option = [.autoPlayAudio, .publishLocalAudio]
         }
-        ZegoExpressManager.shared.joinRoom(roomID: roomID, user: user, token: token, options: option)
+        ZegoExpressManager.shared.joinRoom(roomID: roomID, user: user, options: option)
         self.presentVC(callType)
     }
     
