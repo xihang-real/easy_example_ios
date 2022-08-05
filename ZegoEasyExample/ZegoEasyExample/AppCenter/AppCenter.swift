@@ -10,13 +10,13 @@ import Foundation
 struct AppCenter {
     
     // Get your AppID from ZEGOCLOUD Console
-    static let appID : UInt32 = 123
+    static let appID : UInt32 = <#appID#>
     //[My Projects -> AppID] : https://console.zegocloud.com/project
     
     // Get your AppID from ZEGOCLOUD Console
-    static let appSign: String = "213"
+    static let appSign: String = "<#appSign#>"
     
     // Get your ServerSecret from ZEGOCLOUD Console
-    static let serverSecret: String = "1231"
+    static let serverSecret: String = "<#serverSecret#>"
     // [My Projects -> project's Edit -> Basic Configurations -> ServerSecret] : https://console.zegocloud.com/project"
 }
